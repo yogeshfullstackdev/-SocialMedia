@@ -1,69 +1,103 @@
-# -SocialMedia
-A simple social media application where users can create posts, like posts, and follow other users. The application should be built using the (Laravel 10, MySql).
+# Laravel Social Media Application
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+This is a simple social media application built with Laravel 10 and MySQL where users can:
+- Create and view posts
+- Like posts
+- Follow other users
+- View followers and following
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Features
 
-## About Laravel
+- **Posts**: Users can create and display posts.
+- **Like Posts**: Logged-in users can like posts.
+- **Follow Users**: Follow other users and view followers and followings.
+- **Authentication**: User authentication using Laravel Breeze.
+- **Profile Management**: Users can view their profiles and posts.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Requirements
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- PHP >= 8.1
+- Composer
+- Node.js
+- MySQL Database
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Installation
 
-## Learning Laravel
+### 1. Clone the Repository
+- git clone https://github.com/your-username/social-media-app.git
+- cd social-media-app
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 2. Install Dependencies
+  Install PHP dependencies using Composer:
+- composer install
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+  Install Node.js dependencies for front-end (if needed):
+- npm install
+- npm run build
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 3. Setup Environment
+  Copy the .env.example file to .env and configure your environment settings, such as database and mail settings:
+- cp .env.example .env
 
-## Laravel Sponsors
+  Generate the application key:
+- php artisan key:generate
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 4. Configure Database
+  Update the .env file with your MySQL database configuration:
 
-### Premium Partners
+- DB_CONNECTION=mysql
+- DB_HOST=127.0.0.1
+- DB_PORT=3306
+- DB_DATABASE=social_media
+- DB_USERNAME=root
+- DB_PASSWORD=your-password
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+**Note: Database file included for reference with some testing data (social_media_app.sql)
 
-## Contributing
+### 5. Run Migrations
+  Run the database migrations to create the necessary tables:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- php artisan migrate
 
-## Code of Conduct
+### 6. Seed the Database (Optional)
+  You can also seed the database with dummy data for testing:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- php artisan db:seed
 
-## Security Vulnerabilities
+### 7. Run the Application
+  To start the development server, run:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- php artisan serve
+- The application will be available at http://localhost:8000.
+
+### 8. Compile Front-End Assets (Optional)
+If you are making changes to the front-end, you need to recompile the assets:
+- npm run dev
+
+## Usage
+- Home Page: Lists all posts (visible to both logged-in and guest users).
+- Dashboard: After logging in, users can access the dashboard to create posts, view followers, and manage profiles.
+- Follow/Unfollow: Logged-in users can follow/unfollow other users.
+- Likes: Logged-in users can like posts.
+
+## Routes
+- / - Home page (displays posts)
+- /dashboard - Dashboard (after login)
+- /create-post - Create a new post
+- /follow-user/{user} - Follow a user
+- /unfollow-user/{user} - Unfollow a user
+
+## Authentication
+- This application uses Laravel Breeze for authentication, which includes registration, login, and password reset functionality.
 
 ## License
+- This project is open-source and available under the MIT License.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Explanation:
+- **Description**: Brief overview of the application and its features.
+- **Requirements**: Specifies the necessary versions of PHP, Composer, etc.
+- **Installation**: Detailed steps on how to set up the application.
+- **Usage**: Explanation of the available routes and features.
+- **License**: Standard MIT license for open-source sharing (optional, depending on your licensing preference). 
+
+You can customize the repository name and URL according to your GitHub setup.
